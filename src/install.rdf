@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+  
+    <em:name>Tab in Textarea</em:name>
+    <em:description>Enter tab characters in textareas.</em:description>
+    <em:id>{df9815d2-ca91-4e8f-aaa3-066d1de2c7a2}</em:id>
+    <em:version>0.0.3</em:version>
+    <em:creator>Bálint Endrey</em:creator>
+  
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>1.0</em:minVersion>
+        <em:maxVersion>1.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  
+    <em:file>
+      <Description about="urn:mozilla:extension:file:tabinta.jar">
+        <em:package>content/</em:package>
+      </Description>
+    </em:file>
+  
+  </Description>
+  
+</RDF>
+

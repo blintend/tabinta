@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<overlay id="tabintaOverlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="tabintaOverlay.js"/>
+  <script type="application/x-javascript"><![CDATA[
+    window.addEventListener('load',  tabinta.init, false);
+  ]]></script>
+  
+</overlay>

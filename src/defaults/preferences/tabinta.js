@@ -1,0 +1,1 @@
+pref("tabinta.active", true);
