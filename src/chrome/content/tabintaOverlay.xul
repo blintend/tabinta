@@ -8,4 +8,10 @@
     window.addEventListener('load',  tabinta.init, false);
   ]]></script>
   
+  <popup id="contentAreaContextMenu">
+    <menuitem id="context-tabinta" label="Tabinta" type="checkbox"
+        insertbefore="context-cut" oncommand="tabinta.activeToggle()"/>
+    <menuseparator id="context-sep-tabinta" insertbefore="context-cut"/>
+  </popup>
+  
 </overlay>

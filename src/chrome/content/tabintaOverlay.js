@@ -39,6 +39,22 @@ var tabinta = {
         tabinta.prefb = tabinta.getPrefBranch("tabinta.");
         tabinta.prefb.addObserver("active", tabinta.activeObserver, false);
         tabinta.syncActive();
+        // context menu setup:
+        var menu = document.getElementById("contentAreaContextMenu");
+        menu.addEventListener("popupshowing", tabinta.contextShowing, false);
+    },
+    
+    /* Context menu handling */
+
+    contextShowing: function() {
+      var inta = gContextMenu.onTextInput
+          && gContextMenu.target.localName.toUpperCase() == "TEXTAREA";
+      gContextMenu.showItem("context-tabinta", inta);
+      gContextMenu.showItem("context-sep-tabinta", inta);
+    },
+    
+    activeToggle: function() {
+      tabinta.setActive(!tabinta.isActive());
     },
     
     /* Active/passive state handling */
@@ -53,13 +69,20 @@ var tabinta = {
         return tabinta.prefb.getBoolPref("active");
     },
 
+    setActive: function(active) {
+        tabinta.prefb.setBoolPref("active", active);
+    },
+
     syncActive: function() {
+        var active = tabinta.isActive();
         var appcontent = document.getElementById("appcontent");
-        if (tabinta.isActive()) {
+        if (active) {
             appcontent.addEventListener("keypress", tabinta.onKeyPress, false);
         } else {
             appcontent.removeEventListener("keypress", tabinta.onKeyPress, false);
         }
+        document.getElementById("context-tabinta")
+            .setAttribute("checked", active); // simply .checked = active did not work
     },
 
     /* Tabinta functionality */
