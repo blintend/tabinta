@@ -35,10 +35,18 @@ var tabinta = {
     
     prefb: undefined,   // preferences branch
     
+    keyCode: undefined,
+    charCode: undefined,
+    shiftKey: undefined,
+    ctrlKey: undefined,
+    altKey: undefined,
+    
     init: function() {
         tabinta.prefb = tabinta.getPrefBranch("tabinta.");
         tabinta.prefb.addObserver("active", tabinta.activeObserver, false);
+        tabinta.prefb.addObserver("key", tabinta.keyObserver, false);
         tabinta.syncActive();
+        tabinta.syncKey();
         // context menu setup:
         var menu = document.getElementById("contentAreaContextMenu");
         menu.addEventListener("popupshowing", tabinta.contextShowing, false);
@@ -82,14 +90,42 @@ var tabinta = {
             appcontent.removeEventListener("keypress", tabinta.onKeyPress, false);
         }
         document.getElementById("context-tabinta")
-            .setAttribute("checked", active); // simply .checked = active did not work
+            .setAttribute("checked", active);
     },
 
+    /* Key definition */
+    
+    keyObserver: {
+        observe: function(subject, topic, data) {
+            tabinta.syncKey();
+        }
+    },
+
+    /* e.g. _extractProp("ab:c, de:f, gh:i", "de") -> "f" */
+    _extractProp: function(str, prop, dflt) {
+        var re = new RegExp("\\b" + prop + "\\s*:\\s*(\\w+)\\s*(,|$)");
+        var match = re.exec(str);
+        return match ? match[1] : dflt;
+    },
+    
+    syncKey: function() {
+        var keyStr = tabinta.prefb.getCharPref("key");
+        tabinta.keyCode = tabinta._extractProp(keyStr, "keyCode", 0);
+        tabinta.charCode = tabinta._extractProp(keyStr, "charCode", 0);
+        tabinta.shiftKey = tabinta._extractProp(keyStr, "shiftKey", "false") == "true";
+        tabinta.ctrlKey = tabinta._extractProp(keyStr, "ctrlKey", "false") == "true";
+        tabinta.altKey = tabinta._extractProp(keyStr, "altKey", "false") == "true";
+    },
+    
     /* Tabinta functionality */
     
     onKeyPress: function(event) {
-        if (event.keyCode==9 && !event.shiftKey && !event.ctrlKey
-                && !event.altKey && event.originalTarget.nodeName=="TEXTAREA") {
+        if (event.keyCode==tabinta.keyCode
+                && event.charCode==tabinta.charCode
+                && event.originalTarget.nodeName=="TEXTAREA"
+                && event.shiftKey==tabinta.shiftKey
+                && event.ctrlKey==tabinta.ctrlKey
+                && event.altKey==tabinta.altKey) {
             tabinta.insertTab(event.originalTarget);
             event.preventDefault();
         }
