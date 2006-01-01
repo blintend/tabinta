@@ -1,3 +1,7 @@
+const jsLoader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"]
+        .getService(Components.interfaces.mozIJSSubScriptLoader);
+jsLoader.loadSubScript("chrome://tabinta/content/common.js");
+
 var tabinta = {
 
     /**
@@ -42,7 +46,7 @@ var tabinta = {
     altKey: undefined,
     
     init: function() {
-        tabinta.prefb = tabinta.getPrefBranch("tabinta.");
+        tabinta.prefb = tabinta_getPrefBranch("tabinta.");
         tabinta.prefb.addObserver("active", tabinta.activeObserver, false);
         tabinta.prefb.addObserver("key", tabinta.keyObserver, false);
         tabinta.syncActive();
@@ -132,7 +136,7 @@ var tabinta = {
     },
 
     insertTab: function(element) {
-        tabinta.insertText(element, "\t");
+        tabinta_insertText(element, "\t");
     }
       
 }
