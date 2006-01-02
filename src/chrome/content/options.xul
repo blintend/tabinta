@@ -11,7 +11,7 @@
         
     var key = undefined;
 
-    function kh(e) {
+    function event2key(e) {
       var assgs = [];
       if(e.shiftKey) assgs.push("shiftKey:true");
       if(e.ctrlKey) assgs.push("ctrlKey:true");
@@ -21,14 +21,22 @@
       return assgs.join(", ");
     }
 
+    function textKeyPress(e) {
+        key=event2key(e);
+        e.target.value='New key assigned';
+        return false;
+    }
+    
     function doOk() {
       tabinta_getPrefBranch("tabinta.").setCharPref("key", key);
       return true;
     }
   ]]></script>
-  <hbox>
-    <label value="Press tabinta key"/>
-    <textbox onkeypress="key=kh(event); return false"/>
-  </hbox>
+  <groupbox>
+    <caption label="Assign tabinta key"/>
+    <textbox onkeypress="return textKeyPress(event)"
+            onfocus="this.value='Press new tab key'"
+            onblur="this.value=''"/>
+  </groupbox>
 </dialog>
 
