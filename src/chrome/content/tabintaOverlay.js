@@ -126,7 +126,7 @@ var tabinta = {
     onKeyPress: function(event) {
         if (event.keyCode==tabinta.keyCode
                 && event.charCode==tabinta.charCode
-//                && event.originalTarget.nodeName=="TEXTAREA"
+                && event.originalTarget.nodeName=="TEXTAREA"
                 && event.shiftKey==tabinta.shiftKey
                 && event.ctrlKey==tabinta.ctrlKey
                 && event.altKey==tabinta.altKey) {
