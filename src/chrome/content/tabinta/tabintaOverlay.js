@@ -4,37 +4,6 @@ jsLoader.loadSubScript("chrome://tabinta/content/common.js");
 
 var tabinta = {
 
-    /**
-     * Reusable (not tabinta-specific) utility functions
-     **/
-
-    // Insert text into the given element
-    insertText: function(element, aText) {
-        var command = "cmd_insertText";
-        var controller = element.controllers.getControllerForCommand(command);
-        if (controller && controller.isCommandEnabled(command)) {
-            controller = controller.QueryInterface(Components.interfaces.nsICommandController);
-            var params = Components.classes["@mozilla.org/embedcomp/command-params;1"];
-            params = params.createInstance(Components.interfaces.nsICommandParams);
-            params.setStringValue("state_data", aText);
-            controller.doCommandWithParams(command, params);
-        }
-    },
-
-    // Return the given preference branch object.
-    // It is prepared for both nsIPrefBranch and nsIPrefBranchInternal usage.
-    getPrefBranch: function(root) {
-        var prefb = Components.classes["@mozilla.org/preferences-service;1"]
-                .getService(Components.interfaces.nsIPrefService)
-                .getBranch(root);
-        prefb.QueryInterface(Components.interfaces.nsIPrefBranchInternal);
-        return prefb;
-    },
-    
-    /**
-     * Tabinta logic
-     **/
-    
     /* Initialization */
     
     prefb: undefined,   // preferences branch
@@ -78,7 +47,11 @@ var tabinta = {
     },
     
     isActive: function() {
-        return tabinta.prefb.getBoolPref("active");
+        try {
+            return tabinta.prefb.getBoolPref("active");
+        } catch (e) { // Mozilla does not support defaults/preferences/*.js
+            return true;
+        }
     },
 
     setActive: function(active) {
@@ -105,6 +78,14 @@ var tabinta = {
         }
     },
 
+    getKeyStr: function() {
+        try {
+            return tabinta.prefb.getCharPref("key");
+        } catch (e) { // Mozilla does not support defaults/preferences/*.js
+            return "keyCode:9";
+        }
+    },
+
     /* e.g. _extractProp("ab:c, de:f, gh:i", "de") -> "f" */
     _extractProp: function(str, prop, dflt) {
         var re = new RegExp("\\b" + prop + "\\s*:\\s*(\\w+)\\s*(,|$)");
@@ -113,7 +94,7 @@ var tabinta = {
     },
     
     syncKey: function() {
-        var keyStr = tabinta.prefb.getCharPref("key");
+        var keyStr = tabinta.getKeyStr();
         tabinta.keyCode = tabinta._extractProp(keyStr, "keyCode", 0);
         tabinta.charCode = tabinta._extractProp(keyStr, "charCode", 0);
         tabinta.shiftKey = tabinta._extractProp(keyStr, "shiftKey", "false") == "true";

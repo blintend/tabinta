@@ -12,9 +12,13 @@
   
   <Seq about="urn:mozilla:overlays">
     <li resource="chrome://browser/content/browser.xul"/>
+    <li resource="chrome://navigator/content/navigator.xul"/>
   </Seq>
   
   <Seq about="chrome://browser/content/browser.xul">
+    <li>chrome://tabinta/content/tabintaOverlay.xul</li>
+  </Seq>
+  <Seq about="chrome://navigator/content/navigator.xul">
     <li>chrome://tabinta/content/tabintaOverlay.xul</li>
   </Seq>
 
