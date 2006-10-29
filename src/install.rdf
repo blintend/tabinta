@@ -8,7 +8,7 @@
     <em:name>Tab in Textarea</em:name>
     <em:description>Insert tab characters in textareas.</em:description>
     <em:id>{df9815d2-ca91-4e8f-aaa3-066d1de2c7a2}</em:id>
-    <em:version>0.1</em:version>
+    <em:version>0.2</em:version>
     <em:creator>Bálint Endrey</em:creator>
   
     <em:targetApplication>
@@ -23,7 +23,7 @@
     
     <em:file>
       <Description about="urn:mozilla:extension:file:tabinta.jar">
-        <em:package>content/</em:package>
+        <em:package>content/tabinta/</em:package>
       </Description>
     </em:file>
   
