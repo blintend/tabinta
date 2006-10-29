@@ -1,0 +1,6 @@
+- Mozilla 1.7 support
+- logo |->|
+- localization
+- 1.0
+- upload to addons.mozilla.org
+- Tab indents selection
