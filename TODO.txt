@@ -1,3 +1,4 @@
+- exclude list: gui config
 - logo |->|
 - localization
 - 1.0
@@ -5,3 +6,4 @@
 - preferences gui:
     - better focus handling
     - show in mozilla
+- cssedit support

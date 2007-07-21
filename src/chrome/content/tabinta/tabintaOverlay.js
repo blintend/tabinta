@@ -110,7 +110,8 @@ var tabinta = {
                 && event.originalTarget.nodeName=="TEXTAREA"
                 && event.shiftKey==tabinta.shiftKey
                 && event.ctrlKey==tabinta.ctrlKey
-                && event.altKey==tabinta.altKey) {
+                && event.altKey==tabinta.altKey
+                && tabinta.filter(event)) {
             tabinta.insertTab(event.originalTarget);
             event.preventDefault();
         }
@@ -118,6 +119,33 @@ var tabinta = {
 
     insertTab: function(element) {
         tabinta_insertText(element, "\t");
+    },
+    
+    /* Exclude unwanted fields */
+
+    filter: function(event) {
+        for (var i=0; tabinta.hasExclude(i); ++i) {
+            if (tabinta.isExcluded(event, i)) return false;
+        }
+        return true;
+    },
+
+    hasExclude: function(idx) {
+        try {
+            tabinta.prefb.getCharPref("filter."+idx+".href");
+        } catch(e) { // we assume that the pref does not exist
+            return false;
+        }
+        return true;
+    },
+
+    isExcluded: function(event, idx) {
+        if (new RegExp(tabinta.prefb.getCharPref("filter."+idx+".href")).test(content.location.href)
+                && tabinta.prefb.getCharPref("filter."+idx+".ctlname") == event.originalTarget.name) {
+            return true;
+        } else {
+            return false;
+        }
     }
-      
+
 }
