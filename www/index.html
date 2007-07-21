@@ -84,5 +84,19 @@ Note: this option is also available as a hidden preference:
 <code>tabinta.active</code> (available in <code>about:config</code>).
 </p>
 
+<p>From version 0.4, advanced users can disable Tabinta on a field-by-field
+basis. This is controlled by hidden preferences that specify which website
+and field is to be turned off. The preferences are named
+<code>tabinta.filter.N.href</code> for the website address and
+<code>tabinta.filter.N.ctlname</code> for the name attribute of the textarea
+field. N goes as 0, 1, ... for the individual entries. Example: for Google Mail,
+when composing a message, the "To" field is a textarea where typing tab
+characters does not make sense. To disable Tabinta on that field:
+</p>
+<pre>
+  tabinta.filter.0.ctlname  to
+  tabinta.filter.0.href     http://mail.google.com/mail
+</pre>
+
 <!--<p><strong>Note:</strong> If you want to add an area for user feedback to any of your pages, take a look at the <a href="notes.html">notes.html</a>
 template.</p>-->
