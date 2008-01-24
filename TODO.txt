@@ -1,7 +1,6 @@
-- exclude list: gui config
-- logo |->|
 - localization
 - 1.0
+- exclude list: gui config
 - Tab indents selection
 - preferences gui:
     - better focus handling
