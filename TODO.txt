@@ -1,7 +1,11 @@
 - 1.0
+- remove CVS directories from xpi
 - exclude list: gui config
-- Tab indents selection
 - preferences gui:
     - better focus handling
     - show in mozilla
+
+Maybe:
+
+- Tab indents selection
 - cssedit support
