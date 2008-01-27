@@ -4,8 +4,8 @@ extFullName: 'Tab in Textarea', // The name displayed to the user (don't include
 extShortName: 'tabinta', // The leafname of the JAR file (without the .jar part)
 extVersion: '0.5',
 extAuthor: 'Balint Endrey',
-extLocaleNames: null,
-extSkinNames: null,
+extLocaleNames: ['en-US'],
+extSkinNames: ['classic'],
 extPostInstallMessage: 'Success! Please restart your browser to finish the installation.', // Set to null for no post-install message
 profileInstall: true,
 silentInstall: false,
@@ -40,8 +40,14 @@ install: function()
 
 	for (var locale in this.extLocaleNames)
 	{
-		var regPath = 'locale/' + this.extLocaleNames[locale] + '/';
+		var regPath = 'locale/' + this.extLocaleNames[locale] + '/' + this.extShortName + '/';
 		Install.registerChrome(Install.LOCALE | installType, jarPath, regPath);
+	}
+
+	for (var skin in this.extSkinNames)
+	{
+		var regPath = 'skin/' + this.extSkinNames[skin] + '/' + this.extShortName + '/';
+		Install.registerChrome(Install.SKIN | installType, jarPath, regPath);
 	}
 
 	var err = Install.performInstall();
