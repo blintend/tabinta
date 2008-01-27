@@ -1,4 +1,3 @@
-- localization
 - 1.0
 - exclude list: gui config
 - Tab indents selection
