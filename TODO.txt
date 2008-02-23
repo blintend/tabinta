@@ -1,9 +1,11 @@
 - check comment about google support
+- consider configurable spaces
 - Hungarian localization
 - preferences gui:
     - better focus handling
     - show in mozilla
 - remove CVS directories from xpi
+- FF3 compatibility
 - 1.0
 - exclude list: gui config
 
