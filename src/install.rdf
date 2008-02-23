@@ -41,6 +41,7 @@
     <em:file>
       <Description about="urn:mozilla:extension:file:tabinta.jar">
         <em:locale>locale/en-US/tabinta/</em:locale>
+        <em:locale>locale/hu/tabinta/</em:locale>
         <em:package>content/tabinta/</em:package>
         <em:skin>skin/classic/tabinta/</em:skin>
       </Description>

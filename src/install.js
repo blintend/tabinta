@@ -4,7 +4,7 @@ extFullName: 'Tab in Textarea', // The name displayed to the user (don't include
 extShortName: 'tabinta', // The leafname of the JAR file (without the .jar part)
 extVersion: '0.5',
 extAuthor: 'Balint Endrey',
-extLocaleNames: ['en-US'],
+extLocaleNames: ['en-US', 'hu'],
 extSkinNames: ['classic'],
 extPostInstallMessage: 'Success! Please restart your browser to finish the installation.', // Set to null for no post-install message
 profileInstall: true,
