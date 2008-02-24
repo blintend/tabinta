@@ -29,4 +29,6 @@ MAKING A RELEASE - CHECKLIST
 * upload xpi
 * update web site (index.html, installation.html)
 * cvs tag release-X_Y_Z
+** if we make late changes, the tags can be updated with the -F option:
+** cvs tag -F release-X_Y_Z
 * upload to addons.mozilla.org
