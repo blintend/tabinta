@@ -22,3 +22,11 @@ $ firefox -P xdev
 
 Actual installation of Tabinta is simply by opening the .xpi file as usual.
 
+MAKING A RELEASE - CHECKLIST
+
+* smoke test in Firefox 1.0, Seamonkey and other "extreme" browsers
+* update version numbers in install.rdf and install.js
+* upload xpi
+* update web site (index.html, installation.html)
+* cvs tag release-X_Y_Z
+* upload to addons.mozilla.org
