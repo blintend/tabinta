@@ -62,9 +62,9 @@ var tabinta = {
         var active = tabinta.isActive();
         var appcontent = document.getElementById("appcontent");
         if (active) {
-            appcontent.addEventListener("keypress", tabinta.onKeyPress, false);
+            appcontent.addEventListener("keypress", tabinta.onKeyPress, true);
         } else {
-            appcontent.removeEventListener("keypress", tabinta.onKeyPress, false);
+            appcontent.removeEventListener("keypress", tabinta.onKeyPress, true);
         }
         document.getElementById("context-tabinta")
             .setAttribute("checked", active);
