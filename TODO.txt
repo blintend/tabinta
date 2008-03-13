@@ -1,4 +1,3 @@
-- check comment about google support
 - consider configurable spaces
 - preferences gui:
     - better focus handling
