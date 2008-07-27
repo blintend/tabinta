@@ -13,6 +13,9 @@ var tabinta = {
     shiftKey: undefined,
     ctrlKey: undefined,
     altKey: undefined,
+
+    hardTab: undefined,
+    tabStop: undefined,
     
     init: function() {
         tabinta.prefb = tabinta_getPrefBranch("tabinta.");
@@ -118,9 +121,48 @@ var tabinta = {
     },
 
     insertTab: function(element) {
-        tabinta_insertText(element, "\t");
+        var text;
+        if (tabinta.isHard()) {
+            text = "\t";
+	} else {
+            var tabWidth = tabinta.getTabWidth();
+            text = tabinta.spaces(tabWidth);
+	}
+        tabinta_insertText(element, text);
     },
     
+    /* Spaces-as-tab */
+
+    isHard: function() {
+        try {
+            return tabinta.prefb.getBoolPref("hard");
+        } catch (e) { // Mozilla does not support defaults/preferences/*.js
+            return true;
+        }
+    },
+
+    getTabWidth: function() {
+        try {
+            return tabinta.prefb.getIntPref("tab_width");
+        } catch (e) { // Mozilla does not support defaults/preferences/*.js
+            return 8;
+        }
+    },
+
+    spaces: function(n) {
+        var SP8 = "        ";
+        if (n <= 8) {
+            return SP8.substring(0, n);
+        } else {
+            var sp = "";
+            while (n > 8) {
+                sp += SP8;
+                n -= 8;
+            }
+            return sp + spaces(n);
+        }
+    },
+
     /* Exclude unwanted fields */
 
     filter: function(event) {
