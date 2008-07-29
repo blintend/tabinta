@@ -17,13 +17,13 @@ build() {
     [ ! -e "$BUILD_DIR" ] || rm -Rf "$BUILD_DIR"
     cp -a "$SRC_DIR" "$BUILD_DIR"
     rm -Rf "$BUILD_DIR"/chrome/*
-    ( cd "$SRC_DIR"/chrome && zip -qr "$BUILD_DIR"/chrome/tabinta.jar * )
+    ( cd "$SRC_DIR"/chrome && zip -qr "$BUILD_DIR"/chrome/tabinta.jar * -x 'CVS/*' '*/CVS/*' )
 }
 
 xpi() {
     [ ! -e "$DIST_DIR" ] || rm -Rf "$DIST_DIR"
     mkdir "$DIST_DIR"
-    cd "$BUILD_DIR" && zip -qr "$DIST_DIR"/tabinta.xpi *
+    cd "$BUILD_DIR" && zip -qr "$DIST_DIR"/tabinta.xpi * -x 'CVS/*' '*/CVS/*'
 }
 
 # script code

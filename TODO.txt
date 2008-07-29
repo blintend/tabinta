@@ -2,7 +2,6 @@
 - preferences gui:
     - better focus handling
     - show in mozilla
-- remove CVS directories from xpi
 - 1.0
 - exclude list: gui config
 
