@@ -14,9 +14,6 @@ var tabinta = {
     ctrlKey: undefined,
     altKey: undefined,
 
-    hardTab: undefined,
-    tabStop: undefined,
-    
     init: function() {
         tabinta.prefb = tabinta_getPrefBranch("tabinta.");
         tabinta.prefb.addObserver("active", tabinta.activeObserver, false);
@@ -126,7 +123,8 @@ var tabinta = {
             text = "\t";
 	} else {
             var tabWidth = tabinta.getTabWidth();
-            text = tabinta.spaces(tabWidth);
+            var tabPos = tabinta.getPosOffset(element);
+            text = tabinta.spaces(tabWidth - (tabPos % tabWidth));
 	}
         tabinta_insertText(element, text);
     },
@@ -149,18 +147,24 @@ var tabinta = {
         }
     },
 
+    // return offset relative to the start of the line or the last tab character
+    getPosOffset: function(element) {
+        var value = element.value;
+        var pos = element.selectionStart;
+        for (var i=pos-1; i>=0; --i) {
+            if ("\n\r\t".indexOf(value.charAt(i)) >= 0) break;
+        }
+        return pos-1-i;
+    },
+
     spaces: function(n) {
         var SP8 = "        ";
-        if (n <= 8) {
-            return SP8.substring(0, n);
-        } else {
-            var sp = "";
-            while (n > 8) {
-                sp += SP8;
-                n -= 8;
-            }
-            return sp + spaces(n);
+        var sp = "";
+        while (n > 8) {
+            sp += SP8;
+            n -= 8;
         }
+        return sp + SP8.substring(0, n);
     },
 
     /* Exclude unwanted fields */
