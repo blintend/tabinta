@@ -29,13 +29,14 @@
     }
     
     function doOk() {
-      var prefs = tabinta_getPrefBranch("tabinta.");
+      tabinta_getPrefBranch("tabinta.").setCharPref("key", key);
+      /*var prefs = tabinta_getPrefBranch("tabinta.");
       prefs.setCharPref("key", key);
-      prefs.setBoolPref("hard", document.getElementById("hardGrp").selectedIndex == 0);
+      prefs.setBoolPref("hard", document.getElementById("hardGrp").selectedIndex == 0);*/
       return true;
     }
 
-    window.addEventListener("load", function() {
+    /*window.addEventListener("load", function() {
         var prefs = tabinta_getPrefBranch("tabinta.");
         var radioIdx = prefs.getBoolPref("hard") ? 0 : 1;
         document.getElementById("hardGrp").selectedIndex = radioIdx;
@@ -47,7 +48,7 @@
     // does not force user-specific pref; set pref only if changed
     // observer to "live-update" form
     // tab key: show it (e.g. "Shift + Ctrl + F12")
-    // focus on load (where?), usability
+    // focus on load (where?), usability*/
   ]]></script>
   <groupbox>
     <caption label="&tabinta.assign_key.label;"/>
@@ -55,7 +56,7 @@
             onfocus="this.value='&tabinta.press_key.msg;'"
             onblur="this.value=''"/>
   </groupbox>
-  <groupbox>
+  <!--groupbox>
     <caption label="Tab behavior"/>
     <radiogroup id="hardGrp">
       <radio label="Hard tab" onclick="document.getElementById('tabwidth').disabled=true"/>
@@ -65,6 +66,6 @@
         <textbox id="tabwidth"/>
       </hbox>
     </radiogroup>
-  </groupbox>
+  </groupbox-->
 </dialog>
 
