@@ -14,6 +14,8 @@ var tabinta = {
     ctrlKey: undefined,
     altKey: undefined,
 
+    ROWS_IGNORE: 1,
+
     init: function() {
         tabinta.prefb = tabinta_getPrefBranch("tabinta.");
         tabinta.prefb.addObserver("active", tabinta.activeObserver, false);
@@ -111,6 +113,7 @@ var tabinta = {
                 && event.shiftKey==tabinta.shiftKey
                 && event.ctrlKey==tabinta.ctrlKey
                 && event.altKey==tabinta.altKey
+                && tabinta.rowLimit(event)
                 && tabinta.filter(event)) {
             tabinta.insertTab(event.originalTarget);
             event.preventDefault();
@@ -192,6 +195,12 @@ var tabinta = {
         } else {
             return false;
         }
+    },
+
+    rowLimit: function(event) {
+        var ctl = event.originalTarget;
+        if (ctl.rows>0 && ctl.rows<=tabinta.ROWS_IGNORE) return false;
+        return true;
     }
 
 }
