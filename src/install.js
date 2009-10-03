@@ -2,7 +2,7 @@ var XpiInstaller =
 {
 extFullName: 'Tab in Textarea', // The name displayed to the user (don't include the version)
 extShortName: 'tabinta', // The leafname of the JAR file (without the .jar part)
-extVersion: '0.7',
+extVersion: '0.8',
 extAuthor: 'Balint Endrey',
 extLocaleNames: ['en-US', 'hu'],
 extSkinNames: ['classic'],
