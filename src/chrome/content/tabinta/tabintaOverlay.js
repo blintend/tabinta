@@ -13,6 +13,7 @@ var tabinta = {
     shiftKey: undefined,
     ctrlKey: undefined,
     altKey: undefined,
+    metaKey: undefined,
 
     ROWS_IGNORE: 1,
 
@@ -102,6 +103,7 @@ var tabinta = {
         tabinta.shiftKey = tabinta._extractProp(keyStr, "shiftKey", "false") == "true";
         tabinta.ctrlKey = tabinta._extractProp(keyStr, "ctrlKey", "false") == "true";
         tabinta.altKey = tabinta._extractProp(keyStr, "altKey", "false") == "true";
+        tabinta.metaKey = tabinta._extractProp(keyStr, "metaKey", "false") == "true";
     },
     
     /* Tabinta functionality */
@@ -113,6 +115,7 @@ var tabinta = {
                 && event.shiftKey==tabinta.shiftKey
                 && event.ctrlKey==tabinta.ctrlKey
                 && event.altKey==tabinta.altKey
+                && event.metaKey==tabinta.metaKey
                 && tabinta.rowLimit(event)
                 && tabinta.filter(event)) {
             tabinta.insertTab(event.originalTarget);

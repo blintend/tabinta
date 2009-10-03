@@ -13,10 +13,12 @@
     var key = undefined;
 
     function event2key(e) {
+      if (!e.keyCode && !ev.charCode) return undefined; // happens e.g. when pressing meta key on Linux
       var assgs = [];
       if(e.shiftKey) assgs.push("shiftKey:true");
       if(e.ctrlKey) assgs.push("ctrlKey:true");
       if(e.altKey) assgs.push("altKey:true");
+      if(e.metaKey) assgs.push("metaKey:true");
       if(e.keyCode) assgs.push("keyCode:"+e.keyCode);
       if(e.charCode) assgs.push("charCode:"+e.charCode);
       return assgs.join(", ");
@@ -24,12 +26,12 @@
 
     function textKeyPress(e, msg) {
         key = event2key(e);
-        e.target.value = msg;
+        if (key) e.target.value = msg;
         return false;
     }
     
     function doOk() {
-      tabinta_getPrefBranch("tabinta.").setCharPref("key", key);
+      if (key) tabinta_getPrefBranch("tabinta.").setCharPref("key", key);
       /*var prefs = tabinta_getPrefBranch("tabinta.");
       prefs.setCharPref("key", key);
       prefs.setBoolPref("hard", document.getElementById("hardGrp").selectedIndex == 0);*/
