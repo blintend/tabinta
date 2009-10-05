@@ -13,7 +13,7 @@
     var key = undefined;
 
     function event2key(e) {
-      if (!e.keyCode && !ev.charCode) return undefined; // happens e.g. when pressing meta key on Linux
+      if (!e.keyCode && !e.charCode) return undefined; // happens e.g. when pressing meta key on Linux
       var assgs = [];
       if(e.shiftKey) assgs.push("shiftKey:true");
       if(e.ctrlKey) assgs.push("ctrlKey:true");
