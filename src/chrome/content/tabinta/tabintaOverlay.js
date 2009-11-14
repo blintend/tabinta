@@ -50,11 +50,7 @@ var tabinta = {
     },
     
     isActive: function() {
-        try {
-            return tabinta.prefb.getBoolPref("active");
-        } catch (e) { // Mozilla does not support defaults/preferences/*.js
-            return true;
-        }
+        return tabinta.prefb.getBoolPref("active");
     },
 
     setActive: function(active) {
@@ -82,11 +78,7 @@ var tabinta = {
     },
 
     getKeyStr: function() {
-        try {
-            return tabinta.prefb.getCharPref("key");
-        } catch (e) { // Mozilla does not support defaults/preferences/*.js
-            return "keyCode:9";
-        }
+        return tabinta.prefb.getCharPref("key");
     },
 
     /* e.g. _extractProp("ab:c, de:f, gh:i", "de") -> "f" */
@@ -138,19 +130,11 @@ var tabinta = {
     /* Spaces-as-tab */
 
     isHard: function() {
-        try {
-            return tabinta.prefb.getBoolPref("hard");
-        } catch (e) { // Mozilla does not support defaults/preferences/*.js
-            return true;
-        }
+        return tabinta.prefb.getBoolPref("hard");
     },
 
     getTabWidth: function() {
-        try {
-            return tabinta.prefb.getIntPref("tab_width");
-        } catch (e) { // Mozilla does not support defaults/preferences/*.js
-            return 8;
-        }
+        return tabinta.prefb.getIntPref("tab_width");
     },
 
     // return offset relative to the start of the line or the last tab character

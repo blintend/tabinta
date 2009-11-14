@@ -17,6 +17,6 @@ function tabinta_getPrefBranch(root) {
     var prefb = Components.classes["@mozilla.org/preferences-service;1"]
             .getService(Components.interfaces.nsIPrefService)
             .getBranch(root);
-    prefb.QueryInterface(Components.interfaces.nsIPrefBranchInternal);
+    prefb.QueryInterface(Components.interfaces.nsIPrefBranch2);
     return prefb;
 }

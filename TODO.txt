@@ -1,9 +1,10 @@
-- consider configurable spaces
+- remove legacy (pre ff3.0/sm2.0)
 - preferences gui:
+    - use standard preference elements
     - better focus handling
-    - show in mozilla
-- 1.0
-- exclude list: gui config
+    - gui for soft tab, tab size
+    - gui for exclusions
+    - show in seamonkey too
 
 Maybe:
 
