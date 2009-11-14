@@ -1,0 +1,10 @@
+# Manifest file for Tabinta extension
+
+overlay chrome://browser/content/browser.xul chrome://tabinta/content/tabintaOverlay.xul
+
+content tabinta         jar:chrome/tabinta.jar!/content/tabinta/
+
+skin    tabinta classic jar:chrome/tabinta.jar!/skin/classic/tabinta/
+
+locale  tabinta en-US   jar:chrome/tabinta.jar!/locale/en-US/tabinta/
+locale  tabinta hu-HU   jar:chrome/tabinta.jar!/locale/hu-HU/tabinta/
