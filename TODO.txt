@@ -1,4 +1,7 @@
 - remove legacy (pre ff3.0/sm2.0)
+- localize initial extension description:
+  - https://developer.mozilla.org/en/Localizing_extension_descriptions
+- track down occasional localization miss
 - preferences gui:
     - use standard preference elements
     - better focus handling

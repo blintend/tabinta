@@ -30,7 +30,7 @@ MAKING A RELEASE - CHECKLIST
 ** (cvs commit -m "Update version number to X.Y.Z")
 * develop & test...
 ** preferably make a unit test excercising the feature/bugfix
-* smoke test in Firefox 1.0, Seamonkey and other "extreme" browsers
+* smoke test in Firefox 3.0, Seamonkey and other "extreme" browsers
 * commit changes
 * upload xpi
 ** (cvs commit -m "Release X.Y.Z xpi"
