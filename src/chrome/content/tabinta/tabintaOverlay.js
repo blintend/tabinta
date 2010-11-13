@@ -112,6 +112,7 @@ var tabinta = {
                 && tabinta.filter(event)) {
             tabinta.insertTab(event.originalTarget);
             event.preventDefault();
+            event.stopPropagation();    // aggressive; needed for vbulletin; see http://www.linuxquestions.org/questions/lq-suggestions-and-feedback-7/how-does-one-enter-a-tab-character-into-a-post-834210/
         }
     },
 
