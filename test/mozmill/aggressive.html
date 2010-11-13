@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aggressive textarea</title>
+  <script>
+    function keypressHandler(event) {
+        if (event.keyCode==9) {
+            document.getElementById('next').focus();
+        }
+    }
+  </script>
+</head>
+<body>
+
+<p>
+  This test page contains a form with a simple textarea
+  which has an own key handler that makes TAB move to
+  the next field.
+</p>
+
+<form>
+  <textarea id="ta" onkeypress="return keypressHandler(event)"></textarea>
+  <input id="next">
+</form>
+
+</body>
+</html>
