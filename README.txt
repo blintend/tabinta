@@ -15,11 +15,11 @@ INSTALLING FOR DEVELOPMENT
 
 It is recommended to create a separate profile for development
 If you have not done yet, create it:
-$ firefox -ProfileManager   # -> create a profile with name e.g. xdev
+$ firefox -no-remote -P   # -> create a profile with name e.g. xdev
 
 You can then launch Firefox like this:
 $ firefox -P xdev
-Or, if you have an already running FF instance with the default profile:
+Or, if you have an already running Fx instance with the default profile:
 $ firefox -no-remote -P xdev
 
 Actual installation of Tabinta is simply by opening the .xpi file as usual.
