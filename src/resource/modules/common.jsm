@@ -1,5 +1,7 @@
+var EXPORTED_SYMBOLS = ["insertText", "getPrefBranch"];
+
 // Insert text into the given element
-function tabinta_insertText(element, aText) {
+function insertText(element, aText) {
     var command = "cmd_insertText";
     var controller = element.controllers.getControllerForCommand(command);
     if (controller && controller.isCommandEnabled(command)) {
@@ -13,7 +15,7 @@ function tabinta_insertText(element, aText) {
 
 // Return the given preference branch object.
 // It is prepared for both nsIPrefBranch and nsIPrefBranchInternal usage.
-function tabinta_getPrefBranch(root) {
+function getPrefBranch(root) {
     var prefb = Components.classes["@mozilla.org/preferences-service;1"]
             .getService(Components.interfaces.nsIPrefService)
             .getBranch(root);

@@ -1,6 +1,5 @@
-const jsLoader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"]
-        .getService(Components.interfaces.mozIJSSubScriptLoader);
-jsLoader.loadSubScript("chrome://tabinta/content/common.js");
+var common = {};
+Components.utils.import("resource://tabinta/modules/common.jsm", common);
 
 var tabinta = {
 
@@ -18,7 +17,7 @@ var tabinta = {
     ROWS_IGNORE: 1,
 
     init: function() {
-        tabinta.prefb = tabinta_getPrefBranch("tabinta.");
+        tabinta.prefb = common.getPrefBranch("tabinta.");
         tabinta.prefb.addObserver("active", tabinta.activeObserver, false);
         tabinta.prefb.addObserver("key", tabinta.keyObserver, false);
         tabinta.syncActive();
@@ -125,7 +124,7 @@ var tabinta = {
             var tabPos = tabinta.getPosOffset(element);
             text = tabinta.spaces(tabWidth - (tabPos % tabWidth));
 	}
-        tabinta_insertText(element, text);
+        common.insertText(element, text);
     },
     
     /* Spaces-as-tab */

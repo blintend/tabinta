@@ -6,9 +6,8 @@
     buttons="accept,cancel"
     ondialogaccept="return doOk()">
   <script type="application/x-javascript"><![CDATA[
-    const jsLoader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"]
-            .getService(Components.interfaces.mozIJSSubScriptLoader);
-    jsLoader.loadSubScript("chrome://tabinta/content/common.js");
+    var common = {};
+    Components.utils.import("resource://tabinta/modules/common.jsm", common);
         
     var key = undefined;
 
@@ -31,15 +30,15 @@
     }
     
     function doOk() {
-      if (key) tabinta_getPrefBranch("tabinta.").setCharPref("key", key);
-      /*var prefs = tabinta_getPrefBranch("tabinta.");
+      if (key) common.getPrefBranch("tabinta.").setCharPref("key", key);
+      /*var prefs = common.getPrefBranch("tabinta.");
       prefs.setCharPref("key", key);
       prefs.setBoolPref("hard", document.getElementById("hardGrp").selectedIndex == 0);*/
       return true;
     }
 
     /*window.addEventListener("load", function() {
-        var prefs = tabinta_getPrefBranch("tabinta.");
+        var prefs = common.getPrefBranch("tabinta.");
         var radioIdx = prefs.getBoolPref("hard") ? 0 : 1;
         document.getElementById("hardGrp").selectedIndex = radioIdx;
     }, false);
