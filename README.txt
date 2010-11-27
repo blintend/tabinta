@@ -26,16 +26,20 @@ Actual installation of Tabinta is simply by opening the .xpi file as usual.
 
 MAKING A RELEASE - CHECKLIST
 
-* update version numbers in install.rdf and install.js
-** (cvs commit -m "Update version number to X.Y.Z")
+* update version number in install.rdf
+** edit...
+** cvs commit -m "Update version number to X.Y.Z" src/install.rdf
 * develop & test...
 ** preferably make a unit test excercising the feature/bugfix
 * smoke test in Firefox 3.0, Seamonkey and other "extreme" browsers
 * commit changes
 * upload xpi
-** (cvs commit -m "Release X.Y.Z xpi"
+** cp _dist/tabinta.xpi downloads/tabinta-X.Y.Z.xpi
+** cvs add downloads/tabinta-X.Y.Z.xpi
+** cvs commit -m "Release X.Y.Z xpi" downloads/tabinta-X.Y.Z.xpi
 * update web site (index.html, installation.html)
-** (cvs commit -m "Website update for X.Y.Z")
+** edit...
+** cvs commit -m "Website update for X.Y.Z" www/index.html www/installation.html
 * cvs tag release-X_Y_Z
 ** if we make late changes, the tags can be updated with the -F option:
 ** cvs tag -F release-X_Y_Z
